@@ -1,28 +1,31 @@
 " 檔案編碼
-set fileencodings=utf8,gb18030,big5,latin1,default
+set fileencodings=utf8,big5,latin1,default
 set fileencoding=big5
 set <C-u>=^U
 set <C-b>=^B
 map <C-u> :set fileencoding=utf8
-map <C-b> :set fileencoding=gb18030
+map <C-g> :set fileencoding=gb18030
 
-" 編輯喜好設定                                                                                                                                                                                                     
 syntax on        " 語法上色顯示
 let g:kolor_italic=1                    " Enable italic. Default: 1
 let g:kolor_bold=1                      " Enable bold. Default: 1
 let g:kolor_underlined=0                " Enable underline. Default: 0
 let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
-colorscheme werks
+"set t_Co=256
+"colorscheme wombat256mod
+
 set nocompatible " VIM 不使用和 VI 相容的模式
 "set ai           " 自動縮排
 set shiftwidth=4 " 設定縮排寬度 = 4 
 set tabstop=4    " tab 的字元數
 set softtabstop=4
+map <C-t> :set softtabstop=2 shiftwidth=2
 set expandtab   " 用 space 代替 tab
  
 set ruler        " 顯示右下角設定值
 set backspace=2  " 在 insert 也可用 backspace
-set ic           " 設定搜尋忽略大小寫
+map <C-i> :set ic
+" 設定搜尋忽略大小寫
 set ru           " 第幾行第幾個字
 set incsearch    " 在關鍵字還沒完全輸入完畢前就顯示結果
 set smartindent  " 設定 smartindent
@@ -30,4 +33,16 @@ set confirm      " 操作過程有衝突時，以明確的文字來詢問
 set history=100  " 保留 100 個使用過的指令
 set nu
 set clipboard=unnamedplus
- 
+
+map <F2> <ESC>:w<CR>:!python %<CR>
+imap <F2> <ESC>:w<CR>:!python %<CR>
+
+map <F9> <ESC>:w<CR>:!g++ % -o %< -std=c++11 -Wall -Wextra -Wconversion -Wshadow -O3 && ./%<<CR>
+imap <F9> <ESC>:w<CR>:!g++ % -o %< -std=c++11 -Wall -Wextra -Wconversion -Wshadow -O3 && ./%<<CR>
+
+map <F10> <ESC>:w<CR>:!g++ % -o %< -std=c++11 -Wall -Wextra -Wconversion -Wshadow -O3 && ./%< <%<.in<CR>
+imap <F10> <ESC>:w<CR>:!g++ % -o %< -std=c++11 -Wall -Wextra -Wconversion -Wshadow -O3 && ./%< <%<.in<CR>
+
+map <F11> <ESC>:w<CR>:!g++ % -o %< -std=c++11 -Wall -Wextra -Wconversion -Wshadow -O3 && ./%< <%<.in >%<.out<CR>
+map <F11> <ESC>:w<CR>:!g++ % -o %< -std=c++11 -Wall -Wextra -Wconversion -Wshadow -O3 && ./%< <%<.in >%<.out<CR>
+
