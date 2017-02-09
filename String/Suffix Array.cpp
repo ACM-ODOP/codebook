@@ -1,6 +1,6 @@
 struct SuffixArray
 {
-	int maxn=1000000;
+	static const int maxn=1000000;
 	char s[maxn];
 	int sa[maxn],rank[maxn],pri[maxn],c[maxn],n;
 	void build_sa(int m)
